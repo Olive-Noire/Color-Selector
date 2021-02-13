@@ -19,11 +19,11 @@ int main(int argc,char* argv[]) {
 
     SDL_Rect complementaireBar = {382,200,255,10};
     SDL_Rect cursor = {382,190,30,30};
+    
+    bool update(true);
 
     SDL_Event event;
     do {
-
-        bool upadte(true);
 
         SDL_PollEvent(&event);
 
@@ -34,7 +34,7 @@ int main(int argc,char* argv[]) {
                 cursor.x++;
                 complementaire = cursor.x-382;
                 SDL_RenderClear(renderer);
-                upadte = true; 
+                update = true; 
 
             }
             
@@ -43,7 +43,7 @@ int main(int argc,char* argv[]) {
                 cursor.x--;
                 complementaire = cursor.x-382;
                 SDL_RenderClear(renderer);
-                upadte = true; 
+                update = true; 
 
             }
 
@@ -58,7 +58,7 @@ int main(int argc,char* argv[]) {
                     marker.x = event.button.x;
                     marker.y = event.button.y;
                     SDL_RenderClear(renderer);
-                    upadte = true;
+                    update = true;
 
                 }
 
@@ -67,7 +67,7 @@ int main(int argc,char* argv[]) {
                     cursor.x = event.button.x;
                     complementaire = cursor.x-382;
                     SDL_RenderClear(renderer);
-                    upadte = true; 
+                    update = true; 
 
                 }
 
@@ -75,7 +75,7 @@ int main(int argc,char* argv[]) {
 
         }
 
-        if (upadte) {
+        if (update) {
 
             for (unsigned int i = 0;i < 255;i++) {
 
@@ -88,7 +88,7 @@ int main(int argc,char* argv[]) {
 
             }
 
-            upadte = false;
+            update = false;
 
         }
 
